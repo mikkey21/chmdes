@@ -17,6 +17,7 @@ abstract class OrderedSet {
     
 abstract class Event extends AbstractEvent {
     double time;
+    
     public boolean lessThan(Comparable y) {
         Event e = (Event) y;  // Will throw an exception if y is not an Event
         return this.time < e.time;
@@ -43,6 +44,11 @@ class Simulator {
             time = e.time;
             e.execute(this);
         }
+    }
+    
+    void logEvent(MHE equipment, String logMessage) {
+    	//System.out.println(time+" "+equipment.getName()+" "+logMessage);
+    	System.out.format("%f %s %s%n", time, equipment.getName(),logMessage);
     }
 }
 
